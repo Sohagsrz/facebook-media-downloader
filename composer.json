@@ -1,12 +1,12 @@
 {
     "name": "sohagsrz/fbmediadownloader",
     "description": "Facebook Video & Reels Downloader",
+    "keywords": ["facebook", "video", "reels", "downloader"],
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": { 
             "FbMediaDownloader\\": "src/"
-
         }
     },
     "authors": [
