@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Sohagsrz\\Fbmediadownloader\\' => array($baseDir . '/src'),
+    'FbMediaDownloader\\' => array($baseDir . '/src/Fbmediadownloader'),
 );

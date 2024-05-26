@@ -4,8 +4,8 @@
     "type": "library",
     "license": "MIT",
     "autoload": {
-        "psr-4": {
-            "Sohagsrz\\Fbmediadownloader\\": "src/"
+        "psr-4": { 
+            "FbMediaDownloader\\": "src/Fbmediadownloader/"
         }
     },
     "authors": [

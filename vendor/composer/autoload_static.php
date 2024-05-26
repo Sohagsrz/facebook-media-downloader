@@ -7,16 +7,16 @@ namespace Composer\Autoload;
 class ComposerStaticInit6d86d189b9c6682cc9e485e1acaa1e95
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'F' => 
         array (
-            'Sohagsrz\\Fbmediadownloader\\' => 27,
+            'FbMediaDownloader\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Sohagsrz\\Fbmediadownloader\\' => 
+        'FbMediaDownloader\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/src/Fbmediadownloader',
         ),
     );
 
