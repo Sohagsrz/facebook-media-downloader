@@ -3,7 +3,7 @@
         'name' => 'sohagsrz/fbmediadownloader',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '11187fe589a15781f90eec5434996c6c3ca347b1',
+        'reference' => '40f2fa7ce8e6d42e4781010f146f17b88f7d8537',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'sohagsrz/fbmediadownloader' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '11187fe589a15781f90eec5434996c6c3ca347b1',
+            'reference' => '40f2fa7ce8e6d42e4781010f146f17b88f7d8537',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
