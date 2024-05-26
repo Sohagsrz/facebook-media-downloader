@@ -140,6 +140,25 @@ class Downloader
     public function get_result(): string {
         return $this->result;
     }
+    // byte to Size
+    public function formatSizeUnits($bytes): string {
+        $bytes = floatval($bytes);
+        if ($bytes >= 1073741824) {
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+        } elseif ($bytes >= 1048576) {
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+        } elseif ($bytes >= 1024) {
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
+        } elseif ($bytes > 1) {
+            $bytes = $bytes . ' bytes';
+        } elseif ($bytes == 1) {
+            $bytes = $bytes . ' byte';
+        } else {
+            $bytes = '0 bytes';
+        }
+        return $bytes;
+    }
+
     
     //extract id from url
     public function extract_id($url='') : string {
@@ -190,11 +209,13 @@ class Downloader
             $content = $this->get_response();
         }
         if (preg_match('/property="og:title" content="(.*?)"/', $content, $matches)) {
-           if(!empty($matches[1])) return html_entity_decode($this->clean_str($matches[1]));
+           if(!empty($matches[1])){
+             return html_entity_decode($this->clean_str($matches[1]));
+            }
             
         } 
         if (preg_match('/<title>(.+?)<\/title>/', $content, $matches)) {
-            if(!empty($matches[1]))   return html_entity_decode($this->clean_str($matches[1]));
+            if(!empty($matches[1]) && $matches[1] != "Facebook")   return html_entity_decode($this->clean_str($matches[1]));
         } 
         return "";
     }
@@ -216,6 +237,22 @@ class Downloader
         }
         return $this;
     }
+    // get _url header data like size 
+    public function get_header_datas($url) { 
+        $dataX= get_headers($url, 1);
+        $datas = [];
+
+        // content size 
+        $datas['size'] = $dataX['Content-Length'];
+        //size Human
+        $datas['sizeHuman'] = $this->formatSizeUnits($datas['size']);
+        // content type
+        $datas['type'] = $dataX['Content-Type'];
+        
+        
+        return $datas;
+    }
+
     // fetch data from url
     public function fetch_by_url(): self{
 
@@ -288,7 +325,10 @@ class Downloader
         $this->set_title($title);
         $this->set_dl_urls([
             'low' => $sdLink,
-            'high' => $hdLink
+            'lowData' => $this->get_header_datas($sdLink),
+
+            'high' => $hdLink,
+            'highData' => $this->get_header_datas($hdLink)
         ]);
         return $this->get_datas();
     }
